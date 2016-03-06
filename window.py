@@ -1,7 +1,6 @@
 import os, pygame, sys, time
 from pygame.locals import *
 
-import block, game
 from scroller import *
 
 class Window(object):
