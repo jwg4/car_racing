@@ -6,7 +6,7 @@ from scroller import *
 class Window(object):
     def __init__(self):
         # Create the window/Initialise
-        self.window = pygame.display.set_mode((90, 60)
+        self.window = pygame.display.set_mode((90, 60))
         self.clock = pygame.time.Clock()
         self.car_image = pygame.image.load("sprites/car1.png")
         self.init()
