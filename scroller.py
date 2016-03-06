@@ -16,6 +16,8 @@ class Scroller(object):
             
 
 class RoadScroller(Scroller):
+    height = 30
+
     def __init__(self):
         self.road_image = pygame.image.load("backgrounds/road.png")
         self.pieces = [
