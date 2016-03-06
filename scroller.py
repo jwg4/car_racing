@@ -1,3 +1,5 @@
+import os, pygame
+
 class Scroller(object):
     def draw(self, window):
         for piece in self.pieces:

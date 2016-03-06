@@ -1,5 +1,4 @@
-import os, pygame, sys, time
-from pygame.locals import *
+import os, pygame
 
 from scroller import *
 
