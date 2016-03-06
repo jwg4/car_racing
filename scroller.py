@@ -27,3 +27,4 @@ class RoadScroller(Scroller):
 
     def new_piece(self, offset):
         piece = (self.road_image, offset - 90)
+        return piece
