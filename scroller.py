@@ -3,7 +3,7 @@ import os, pygame
 class Scroller(object):
     def draw(self, window):
         for piece in self.pieces:
-            self.window.blit(piece[0], (piece[1], self.height))
+            window.blit(piece[0], (piece[1], self.height))
 
     def advance(self, speed):
         l = [ (piece[0], piece[1] + speed) for piece in self.pieces ]
