@@ -24,7 +24,7 @@ class Window(object):
 
     # THE WHILE LOOP
     def main(self):
-        self.clock.tick(FPS)
+        self.clock.tick(40)
 
         self.listen_for_input()
 
