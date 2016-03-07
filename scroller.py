@@ -47,5 +47,3 @@ class SpriteScroller(Scroller):
         image = self.image1 if (random.random() > 0.5) else self.image2
         position = offset - 30
         return (image, position)
-
-        
