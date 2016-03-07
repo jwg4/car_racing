@@ -28,7 +28,7 @@ class Window(object):
 
         self.listen_for_input()
 
-        for scroller in self.scrollers():
+        for scroller in self.scrollers:
             scroller.advance(self.speed)
 
         self.draw()
@@ -36,8 +36,8 @@ class Window(object):
     # Drawing
     def draw(self):
         self.window.fill(BLACK)
-        for scroller in self.scrollers():
-            scroller.draw(window)
+        for scroller in self.scrollers:
+            scroller.draw(self.window)
         self.draw_car()
 
     def draw_car(self):
