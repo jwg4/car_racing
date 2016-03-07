@@ -42,3 +42,6 @@ class Window(object):
 
     def draw_car(self):
         self.window.blit(self.car_image, (30, 15))
+
+    def listen_for_input(self):
+        pass
