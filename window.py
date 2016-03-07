@@ -44,4 +44,12 @@ class Window(object):
         self.window.blit(self.car_image, (30, 15))
 
     def listen_for_input(self):
-        pass
+        for event in pygame.event.get():
+            if (event.type == pygame.KEYDOWN):
+                if (event.key == pygame.K_LEFT):
+                    if self.speed < 4:
+                        self.speed = self.speed + 1
+                elif (event.key == pygame.K_RIGHT):
+                    if self.speed > 0:
+                        self.speed = self.speed - 1
+                break
