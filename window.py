@@ -35,7 +35,7 @@ class Window(object):
 
     # Drawing
     def draw(self):
-        self.window.fill(BLACK)
+        self.window.fill((0, 0, 0))
         for scroller in self.scrollers:
             scroller.draw(self.window)
         self.draw_car()
