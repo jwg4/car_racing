@@ -12,7 +12,7 @@ class Window(object):
 
     def init(self):
         # Create the game
-        self.speed = 1
+        self.speed = 0
         self.scrollers = [
             RoadScroller(),
             #BackGroundScroller(),
