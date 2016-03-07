@@ -15,16 +15,19 @@ class Scroller(object):
         self.pieces = l
             
 
-class RoadScroller(Scroller):
-    height = 30
-
+class BGScroller(Scroller):
     def __init__(self):
-        self.road_image = pygame.image.load("backgrounds/road.png")
+        self.image = pygame.image.load(self.filename)
         self.pieces = [
-            (self.road_image, 0),
-            (self.road_image, 90)
+            (self.image, 0),
+            (self.image, 90)
         ]
 
     def new_piece(self, offset):
-        piece = (self.road_image, offset - 90)
+        piece = (self.image, offset - 90)
         return piece
+
+class RoadScroller(BGScroller):
+    height = 30
+    filename = "backgrounds/road.png"
+
