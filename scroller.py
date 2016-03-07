@@ -1,3 +1,4 @@
+import random
 import os, pygame
 
 class Scroller(object):
@@ -35,3 +36,16 @@ class SkyScroller(BGScroller):
     height = 0
     filename = "backgrounds/sky.png"
 
+class SpriteScroller(Scroller):
+    height = 0
+    def __init__(self):
+        self.image1 = pygame.image.load("sprites/tree.png")
+        self.image2 = pygame.image.load("sprites/building_block.png")
+        self.pieces = [ self.new_piece(30 * x) for x in range(10) ]
+
+    def new_piece(self, offset):
+        image = self.image1 if (random.random() > 0.5) else self.image2
+        position = offset - 30
+        return (image, position)
+
+        
