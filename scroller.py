@@ -31,3 +31,7 @@ class RoadScroller(BGScroller):
     height = 30
     filename = "backgrounds/road.png"
 
+class SkyScroller(BGScroller):
+    height = 0
+    filename = "backgrounds/sky.png"
+

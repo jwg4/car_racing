@@ -16,7 +16,7 @@ class Window(object):
         self.scrollers = [
             RoadScroller(),
             #BackGroundScroller(),
-            #SkyScroller()
+            SkyScroller()
         ]
 
         # Draw
