@@ -17,7 +17,8 @@ class Scroller(object):
             
     @staticmethod
     def load_pieces(image, width):
-        return [ image for i in range(width / image.width) ]
+        image_width = image.get_width()
+        return [ (image, i * image_width) for i in range(width / image_width) ]
 
 class BGScroller(Scroller):
     def __init__(self, width, height):
