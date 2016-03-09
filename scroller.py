@@ -4,7 +4,7 @@ import os, pygame
 class Scroller(object):
     def draw(self, window):
         for piece in self.pieces:
-            window.blit(piece[0], (piece[1], self.height))
+            window.blit(piece[0], (piece[1], self.y_offset))
 
     def advance(self, speed):
         l = [ (piece[0], piece[1] + speed) for piece in self.pieces ]
@@ -21,8 +21,8 @@ class Scroller(object):
         return [ (image, i * image_width) for i in range(width / image_width) ]
 
 class BGScroller(Scroller):
-    def __init__(self, width, height):
-        self.height = height
+    def __init__(self, width, y_offset):
+        self.y_offset = y_offset
         self.image = pygame.image.load(self.filename)
         self.pieces = self.load_pieces(self.image, width)
 
@@ -37,8 +37,8 @@ class SkyScroller(BGScroller):
     filename = "backgrounds/sky.png"
 
 class SpriteScroller(Scroller):
-    def __init__(self, width, height):
-        self.height = height
+    def __init__(self, width, y_offset):
+        self.y_offset = y_offset
         self.image1 = pygame.image.load("sprites/tree.png")
         self.image2 = pygame.image.load("sprites/building_block.png")
         self.pieces = list(self.load_pieces(width))
