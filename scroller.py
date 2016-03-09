@@ -15,15 +15,15 @@ class Scroller(object):
 
         self.pieces = l
             
+    @staticmethod
+    def load_pieces(image, width):
+        return [ image for i in range(width / image.width) ]
 
 class BGScroller(Scroller):
     def __init__(self, width, height):
         self.height = height
         self.image = pygame.image.load(self.filename)
-        self.pieces = [
-            (self.image, 0),
-            (self.image, 90)
-        ]
+        self.pieces = self.load_pieces(self.image, width)
 
     def new_piece(self, offset):
         piece = (self.image, offset - 90)
