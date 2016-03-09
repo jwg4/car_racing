@@ -12,7 +12,7 @@ class Scroller(object):
 
     def advance(self, speed):
         l = [ (piece[0], piece[1] + speed) for piece in self.pieces ]
-        if l[-1][1] > 90:
+        if l[-1][1] > self.width:
             l = l[:-1]
         if l[0][1] > 0:
             l = [ self.new_piece(l[0][1]) ] + l
