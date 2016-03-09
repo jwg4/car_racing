@@ -31,7 +31,7 @@ class BGScroller(Scroller):
         self.pieces = self.load_pieces(self.image, width)
 
     def new_piece(self, offset):
-        piece = (self.image, offset - 90)
+        piece = (self.image, offset - self.image.get_width())
         return piece
 
 class RoadScroller(BGScroller):
@@ -56,5 +56,5 @@ class SpriteScroller(Scroller):
         
     def new_piece(self, offset):
         image = self.image1 if (random.random() > 0.5) else self.image2
-        position = offset - 30
+        position = offset - image.get_width()
         return (image, position)
