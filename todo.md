@@ -1,2 +1,3 @@
  - QUIT event
  - Makefile to convert images
+ - add pygame to requirements to make travis build work
