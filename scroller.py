@@ -45,12 +45,12 @@ class SpriteScroller(Scroller):
 
     def load_pieces(self, width):
         x = 0
-        while (width - x) > 0:
+        while (width - x) >= 0:
             piece = self.new_piece(x)
             x = x + piece[0].get_width()
             yield piece
         
     def new_piece(self, offset):
         image = self.image1 if (random.random() > 0.5) else self.image2
-        position = offset
+        position = offset - 30
         return (image, position)

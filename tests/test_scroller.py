@@ -23,8 +23,8 @@ class TestScroller(unittest.TestCase):
 class TestSpriteScroller(unittest.TestCase):
     def test_correct_pieces(self):
         scroller = SpriteScroller(90, 0)
-        self.assertEqual(len(scroller.pieces), 3)
+        self.assertEqual(len(scroller.pieces), 4)
 
     def test_correct_x_offsets(self):
         scroller = SpriteScroller(90, 0)
-        self.assertEqual(set(x[1] for x in scroller.pieces), set([0, 30, 60]))
+        self.assertEqual(set(x[1] for x in scroller.pieces), set([-30, 0, 30, 60]))
