@@ -52,5 +52,5 @@ class SpriteScroller(Scroller):
         
     def new_piece(self, offset):
         image = self.image1 if (random.random() > 0.5) else self.image2
-        position = offset - 30
+        position = offset
         return (image, position)
