@@ -2,6 +2,10 @@ import random
 import os, pygame
 
 class Scroller(object):
+    def __init__(self, width, y_offset):
+        self.width = width
+        self.y_offset = y_offset
+
     def draw(self, window):
         for piece in self.pieces:
             window.blit(piece[0], (piece[1], self.y_offset))
@@ -22,7 +26,7 @@ class Scroller(object):
 
 class BGScroller(Scroller):
     def __init__(self, width, y_offset):
-        self.y_offset = y_offset
+        super(BGScroller, self).__init__(width, y_offset)
         self.image = pygame.image.load(self.filename)
         self.pieces = self.load_pieces(self.image, width)
 
@@ -38,7 +42,7 @@ class SkyScroller(BGScroller):
 
 class SpriteScroller(Scroller):
     def __init__(self, width, y_offset):
-        self.y_offset = y_offset
+        super(SpriteScroller, self).__init__(width, y_offset)
         self.image1 = pygame.image.load("sprites/tree.png")
         self.image2 = pygame.image.load("sprites/building_block.png")
         self.pieces = list(self.load_pieces(width))
