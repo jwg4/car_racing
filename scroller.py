@@ -41,8 +41,15 @@ class SpriteScroller(Scroller):
         self.height = height
         self.image1 = pygame.image.load("sprites/tree.png")
         self.image2 = pygame.image.load("sprites/building_block.png")
-        self.pieces = [ self.new_piece(30 * x) for x in range(10) ]
+        self.pieces = list(self.load_pieces(width))
 
+    def load_pieces(self, width):
+        x = 0
+        while (width - x) > 0:
+            piece = self.new_piece(x)
+            x = x + piece[0].get_width()
+            yield piece
+        
     def new_piece(self, offset):
         image = self.image1 if (random.random() > 0.5) else self.image2
         position = offset - 30
