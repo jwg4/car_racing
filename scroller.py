@@ -17,7 +17,7 @@ class Scroller(object):
             
 
 class BGScroller(Scroller):
-    def __init__(self, dimensions, height):
+    def __init__(self, width, height):
         self.height = height
         self.image = pygame.image.load(self.filename)
         self.pieces = [
@@ -36,7 +36,7 @@ class SkyScroller(BGScroller):
     filename = "backgrounds/sky.png"
 
 class SpriteScroller(Scroller):
-    def __init__(self, dimensions, height):
+    def __init__(self, width, height):
         self.height = height
         self.image1 = pygame.image.load("sprites/tree.png")
         self.image2 = pygame.image.load("sprites/building_block.png")

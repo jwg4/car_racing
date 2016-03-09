@@ -16,9 +16,9 @@ class Window(object):
         # Create the game
         self.speed = 0
         self.scrollers = [
-            RoadScroller(self.dimensions, 30),
-            SkyScroller(self.dimensions, 0),
-            SpriteScroller(self.dimensions, 0)
+            RoadScroller(self.dimensions[1], 30),
+            SkyScroller(self.dimensions[1], 0),
+            SpriteScroller(self.dimensions[1], 0)
         ]
 
         # Draw
