@@ -5,8 +5,10 @@ from scroller import *
 class Window(object):
     def __init__(self):
         # Create the window/Initialise
-        self.window = pygame.display.set_mode((90, 60))
+        self.dimensions = (90, 60)
+        self.window = pygame.display.set_mode(self.dimensions)
         self.clock = pygame.time.Clock()
+        self.car_location = (45, 15)
         self.car_image = pygame.image.load("sprites/car1.png")
         self.init()
 
@@ -41,7 +43,7 @@ class Window(object):
         self.draw_car()
 
     def draw_car(self):
-        self.window.blit(self.car_image, (30, 15))
+        self.window.blit(self.car_image, self.car_location)
 
     def listen_for_input(self):
         for event in pygame.event.get():
