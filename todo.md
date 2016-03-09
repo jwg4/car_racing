@@ -1,0 +1,2 @@
+ - QUIT event
+ - Makefile to convert images
