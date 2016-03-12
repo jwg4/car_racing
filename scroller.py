@@ -24,6 +24,31 @@ class Scroller(object):
         image_width = image.get_width()
         return [ (image, i * image_width) for i in range(width / image_width) ]
 
+class RoadScroller(Scroller):
+    filename = "backgrounds/road.png"
+    filename_alt = "backgrounds/bridge_.png"
+
+    def __init__(self, width, y_offset):
+        super(RoadScroller, self).__init__(width, y_offset)
+        self.image = pygame.image.load(self.filename)
+        self.alt_image = pygame.image.load(self.filename_alt)
+        self.pieces = self.load_pieces(self.image, width)
+
+    def draw(self, window):
+        for piece in self.pieces:
+            height = piece[0].get_height()
+            extra_offset = 15 - height / 2
+            window.blit(piece[0], (piece[1], self.y_offset + extra_offset))
+
+    def new_piece(self, offset):
+        if random.random() > 0.8:
+            image = self.alt_image
+        else:
+            image = self.image
+        piece = (image, offset - image.get_width())
+        return piece
+    
+
 class BGScroller(Scroller):
     def __init__(self, width, y_offset):
         super(BGScroller, self).__init__(width, y_offset)
@@ -33,9 +58,6 @@ class BGScroller(Scroller):
     def new_piece(self, offset):
         piece = (self.image, offset - self.image.get_width())
         return piece
-
-class RoadScroller(BGScroller):
-    filename = "backgrounds/road.png"
 
 class SkyScroller(BGScroller):
     filename = "backgrounds/sky.png"
