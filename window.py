@@ -8,8 +8,14 @@ class Window(object):
         self.dimensions = (180, 120)
         self.window = pygame.display.set_mode(self.dimensions)
         self.clock = pygame.time.Clock()
-        self.car_location = (self.dimensions[0]/2, 60)
-        self.car_image = pygame.image.load("sprites/car1.png")
+        car_location = (self.dimensions[0]/2, 60)
+        car_image = pygame.image.load("sprites/car1.png")
+        sun_location = (0, 0)
+        sun_image = pygame.image.load("sprites/sunny.png")
+        self.fixed_sprites = [
+            (car_image, car_location),
+            (sun_image, sun_location),
+        ]
         self.init()
 
     def init(self):
@@ -40,10 +46,11 @@ class Window(object):
         self.window.fill((78, 190, 51))
         for scroller in self.scrollers:
             scroller.draw(self.window)
-        self.draw_car()
+        self.draw_fixed()
 
-    def draw_car(self):
-        self.window.blit(self.car_image, self.car_location)
+    def draw_fixed(self):
+        for image, location in self.fixed_sprites:
+            self.window.blit(image, location)
 
     def quit(self):
         print "QUIT"
