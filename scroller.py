@@ -62,6 +62,9 @@ class BGScroller(Scroller):
 class SkyScroller(BGScroller):
     filename = "backgrounds/sky.png"
 
+class GrassScroller(BGScroller):
+    filename = "backgrounds/grass.png"
+
 class SpriteScroller(Scroller):
     def __init__(self, width, y_offset):
         super(SpriteScroller, self).__init__(width, y_offset)

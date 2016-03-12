@@ -22,7 +22,11 @@ class Window(object):
         # Create the game
         self.speed = 0
         self.scrollers = [
+            GrassScroller(self.dimensions[0], 30),
+            GrassScroller(self.dimensions[0], 45),
+            GrassScroller(self.dimensions[0], 60),
             RoadScroller(self.dimensions[0], 75),
+            GrassScroller(self.dimensions[0], 105),
             SkyScroller(self.dimensions[0], 0),
             SpriteScroller(self.dimensions[0], 30)
         ]
