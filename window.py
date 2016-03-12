@@ -5,10 +5,10 @@ from scroller import *
 class Window(object):
     def __init__(self):
         # Create the window/Initialise
-        self.dimensions = (180, 90)
+        self.dimensions = (180, 120)
         self.window = pygame.display.set_mode(self.dimensions)
         self.clock = pygame.time.Clock()
-        self.car_location = (self.dimensions[0]/2, 45)
+        self.car_location = (self.dimensions[0]/2, 60)
         self.car_image = pygame.image.load("sprites/car1.png")
         self.init()
 
@@ -16,7 +16,7 @@ class Window(object):
         # Create the game
         self.speed = 0
         self.scrollers = [
-            RoadScroller(self.dimensions[0], 60),
+            RoadScroller(self.dimensions[0], 75),
             SkyScroller(self.dimensions[0], 0),
             SpriteScroller(self.dimensions[0], 30)
         ]
@@ -37,7 +37,7 @@ class Window(object):
 
     # Drawing
     def draw(self):
-        self.window.fill((0, 0, 0))
+        self.window.fill((78, 190, 51))
         for scroller in self.scrollers:
             scroller.draw(self.window)
         self.draw_car()
