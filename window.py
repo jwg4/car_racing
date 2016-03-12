@@ -1,4 +1,4 @@
-import os, pygame
+import os, pygame, sys
 
 from scroller import *
 
@@ -45,6 +45,11 @@ class Window(object):
     def draw_car(self):
         self.window.blit(self.car_image, self.car_location)
 
+    def quit(self):
+        print "QUIT"
+        pygame.quit()
+        sys.exit()
+
     def listen_for_input(self):
         for event in pygame.event.get():
             if (event.type == pygame.KEYDOWN):
@@ -54,4 +59,8 @@ class Window(object):
                 elif (event.key == pygame.K_RIGHT):
                     if self.speed > 0:
                         self.speed = self.speed - 1
-                break
+            elif event.type == pygame.QUIT:
+                self.quit()
+            elif event.type == pygame.KEYUP:  # Keyboard
+                if (event.key == pygame.K_ESCAPE) or (event.key == pygame.K_q):
+                    self.quit()
