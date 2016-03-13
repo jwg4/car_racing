@@ -10,9 +10,12 @@ class Window(object):
         self.clock = pygame.time.Clock()
         car_location = (self.dimensions[0]/2, 60)
         car_image = pygame.image.load("sprites/car1.png")
+        car2_location = (self.dimensions[0]/2, 75)
+        car2_image = pygame.image.load("sprites/car2.png")
         sun_location = (0, 0)
         sun_image = pygame.image.load("sprites/sunny.png")
         self.fixed_sprites = [
+            (car2_image, car2_location),
             (car_image, car_location),
             (sun_image, sun_location),
         ]
