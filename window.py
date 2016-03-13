@@ -10,15 +10,15 @@ class Window(object):
         self.clock = pygame.time.Clock()
         car_location = (self.dimensions[0]/2, 60)
         car_image = pygame.image.load("sprites/car1.png")
-        car2_location = (self.dimensions[0]/2, 75)
-        car2_image = pygame.image.load("sprites/car2.png")
         sun_location = (0, 0)
         sun_image = pygame.image.load("sprites/sunny.png")
         self.fixed_sprites = [
-            (car2_image, car2_location),
             (car_image, car_location),
             (sun_image, sun_location),
         ]
+        self.opponent_offset = 0
+        self.opponent_image = pygame.image.load("sprites/car2.png")
+        self.opponent_location = (self.dimensions[0]/2, 75)
         self.init()
 
     def init(self):
@@ -46,7 +46,11 @@ class Window(object):
         for scroller in self.scrollers:
             scroller.advance(self.speed)
 
+        self.update_opponent()
         self.draw()
+
+    def update_opponent(self):
+        self.opponent_offset = self.opponent_offset - 2 + self.speed
 
     # Drawing
     def draw(self):
@@ -54,10 +58,15 @@ class Window(object):
         for scroller in self.scrollers:
             scroller.draw(self.window)
         self.draw_fixed()
+        self.draw_opponent()
 
     def draw_fixed(self):
         for image, location in self.fixed_sprites:
             self.window.blit(image, location)
+
+    def draw_opponent(self):
+        location = (self.opponent_location[0] + self.opponent_offset, self.opponent_location[1])
+        self.window.blit(self.opponent_image, location)
 
     def quit(self):
         print "QUIT"
