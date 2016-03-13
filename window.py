@@ -2,6 +2,21 @@ import os, pygame, sys
 
 from scroller import *
 
+class Opponent(object):
+    def __init__(self, filename, x, y):
+        self.offset = 0
+        self.image = pygame.image.load(filename)
+        self.start_x = x
+        self.start_y = y
+
+    def update(self, speed):
+        self.offset = self.offset - 2 + speed
+
+    def draw(self, window):
+        location = (self.start_x + self.offset, self.start_y)
+        window.blit(self.image, location)
+
+
 class Window(object):
     def __init__(self):
         # Create the window/Initialise
@@ -16,9 +31,7 @@ class Window(object):
             (car_image, car_location),
             (sun_image, sun_location),
         ]
-        self.opponent_offset = 0
-        self.opponent_image = pygame.image.load("sprites/car2.png")
-        self.opponent_location = (self.dimensions[0]/2, 75)
+        self.opponent = Opponent("sprites/car2.png", self.dimensions[0]/2, 75)
         self.init()
 
     def init(self):
@@ -46,11 +59,8 @@ class Window(object):
         for scroller in self.scrollers:
             scroller.advance(self.speed)
 
-        self.update_opponent()
+        self.opponent.update(self.speed)
         self.draw()
-
-    def update_opponent(self):
-        self.opponent_offset = self.opponent_offset - 2 + self.speed
 
     # Drawing
     def draw(self):
@@ -58,15 +68,11 @@ class Window(object):
         for scroller in self.scrollers:
             scroller.draw(self.window)
         self.draw_fixed()
-        self.draw_opponent()
+        self.opponent.draw(self.window)
 
     def draw_fixed(self):
         for image, location in self.fixed_sprites:
             self.window.blit(image, location)
-
-    def draw_opponent(self):
-        location = (self.opponent_location[0] + self.opponent_offset, self.opponent_location[1])
-        self.window.blit(self.opponent_image, location)
 
     def quit(self):
         print "QUIT"
