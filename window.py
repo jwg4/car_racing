@@ -3,7 +3,7 @@ import os, pygame, sys
 from opponent import *
 from scroller import *
 
-SCALE = 2
+SCALE = 5
 
 class Window(object):
     def __init__(self):
