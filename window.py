@@ -8,10 +8,10 @@ SCALE = 2
 class Window(object):
     def __init__(self):
         # Create the window/Initialise
-        self.orig_dimensions = (180, 120)
-        self.dimensions = (180 * SCALE, 120 * SCALE)
-        self.real_window = pygame.display.set_mode(self.dimensions)
-        self.window = pygame.Surface(self.orig_dimensions)
+        self.dimensions = (180, 120)
+        self.scaled_dimensions = (180 * SCALE, 120 * SCALE)
+        self.real_window = pygame.display.set_mode(self.scaled_dimensions)
+        self.window = pygame.Surface(self.dimensions)
         self.clock = pygame.time.Clock()
         car_location = (self.dimensions[0]/2, 60)
         car_image = pygame.image.load("sprites/car1.png")
@@ -60,7 +60,7 @@ class Window(object):
         self.draw_fixed()
         self.opponent.draw(self.window)
         
-        self.real_window.blit(pygame.transform.scale(self.window, self.dimensions), (0, 0))
+        self.real_window.blit(pygame.transform.scale(self.window, self.scaled_dimensions), (0, 0))
 
     def draw_fixed(self):
         for image, location in self.fixed_sprites:
