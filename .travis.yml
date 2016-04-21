@@ -5,7 +5,7 @@ install:
 - pip install -r test_requirements.txt
 script:
   - python -m unittest discover
-  - flake8 . --max-complexity 5 --max-line-length 99
+  - flake8 . --max-complexity 5 --max-line-length 99 --ignore E201,E202
 
 branches:
   only:
