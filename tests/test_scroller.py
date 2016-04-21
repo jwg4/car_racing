@@ -2,6 +2,7 @@ import unittest
 
 from scroller import Scroller, SpriteScroller
 
+
 class TestScroller(unittest.TestCase):
     class MockImage(object):
         def __init__(self, width):
@@ -19,6 +20,7 @@ class TestScroller(unittest.TestCase):
         image = TestScroller.MockImage(30)
         l = Scroller.load_pieces(image, 90)
         self.assertEqual(l[0][0], image)
+
 
 class TestSpriteScroller(unittest.TestCase):
     def test_correct_pieces(self):

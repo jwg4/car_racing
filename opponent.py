@@ -1,5 +1,6 @@
 import pygame
 
+
 class Opponent(object):
     def __init__(self, filename, x, y):
         self.offset = 0
@@ -13,5 +14,3 @@ class Opponent(object):
     def draw(self, window):
         location = (self.start_x + self.offset, self.start_y)
         window.blit(self.image, location)
-
-
