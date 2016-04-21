@@ -14,7 +14,7 @@ class Window(object):
         self.real_window = pygame.display.set_mode(self.scaled_dimensions)
         self.window = pygame.Surface(self.dimensions)
         self.clock = pygame.time.Clock()
-        car_location = (self.dimensions[0]/2, 60)
+        car_location = (self.dimensions[0] / 2, 60)
         car_image = pygame.image.load("sprites/car1.png")
         sun_location = (0, 0)
         sun_image = pygame.image.load("sprites/sunny.png")
@@ -22,7 +22,7 @@ class Window(object):
             (car_image, car_location),
             (sun_image, sun_location),
         ]
-        self.opponent = Opponent("sprites/car2.png", self.dimensions[0]/2, 75)
+        self.opponent = Opponent("sprites/car2.png", self.dimensions[0] / 2, 75)
         self.init()
 
     def init(self):
