@@ -1,8 +1,10 @@
-import os, pygame, sys
+import pygame
+import sys
 
-from opponent import *
-from scroller import *
-from dimensions import SCALE, IMAGE_DIMENSIONS, WINDOW_DIMENSIONS
+from opponent import Opponent
+from scroller import GrassScroller, RoadScroller, SkyScroller, SpriteScroller
+from dimensions import IMAGE_DIMENSIONS, WINDOW_DIMENSIONS
+
 
 class Window(object):
     def __init__(self):
@@ -58,7 +60,7 @@ class Window(object):
             scroller.draw(self.window)
         self.draw_fixed()
         self.opponent.draw(self.window)
-        
+
         self.real_window.blit(pygame.transform.scale(self.window, self.scaled_dimensions), (0, 0))
 
     def draw_fixed(self):
