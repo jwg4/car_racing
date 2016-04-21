@@ -72,17 +72,23 @@ class Window(object):
         pygame.quit()
         sys.exit()
 
+    def handle_key(self, key):
+        if (key == pygame.K_LEFT):
+            if self.speed < 4:
+                self.speed = self.speed + 1
+        elif (key == pygame.K_RIGHT):
+            if self.speed > 0:
+                self.speed = self.speed - 1
+
+    def handle_key_up(self, key):
+        if (key == pygame.K_ESCAPE) or (key == pygame.K_q):
+            self.quit()
+
     def listen_for_input(self):
         for event in pygame.event.get():
             if (event.type == pygame.KEYDOWN):
-                if (event.key == pygame.K_LEFT):
-                    if self.speed < 4:
-                        self.speed = self.speed + 1
-                elif (event.key == pygame.K_RIGHT):
-                    if self.speed > 0:
-                        self.speed = self.speed - 1
+                self.handle_key(event.key)
             elif event.type == pygame.QUIT:
                 self.quit()
             elif event.type == pygame.KEYUP:  # Keyboard
-                if (event.key == pygame.K_ESCAPE) or (event.key == pygame.K_q):
-                    self.quit()
+                self.handle_key_up(event.key)
