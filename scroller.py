@@ -1,5 +1,6 @@
 import random
-import os, pygame
+import pygame
+
 
 class Scroller(object):
     def __init__(self, width, y_offset):
@@ -18,11 +19,12 @@ class Scroller(object):
             l = [ self.new_piece(l[0][1]) ] + l
 
         self.pieces = l
-            
+
     @staticmethod
     def load_pieces(image, width):
         image_width = image.get_width()
         return [ (image, i * image_width) for i in range(width / image_width) ]
+
 
 class RoadScroller(Scroller):
     filename = "backgrounds/road.png"
@@ -47,7 +49,7 @@ class RoadScroller(Scroller):
             image = self.image
         piece = (image, offset - image.get_width())
         return piece
-    
+
 
 class BGScroller(Scroller):
     def __init__(self, width, y_offset):
@@ -59,11 +61,14 @@ class BGScroller(Scroller):
         piece = (self.image, offset - self.image.get_width())
         return piece
 
+
 class SkyScroller(BGScroller):
     filename = "backgrounds/sky.png"
 
+
 class GrassScroller(BGScroller):
     filename = "backgrounds/grass.png"
+
 
 class SpriteScroller(Scroller):
     def __init__(self, width, y_offset):
@@ -78,7 +83,7 @@ class SpriteScroller(Scroller):
             piece = self.new_piece(x)
             x = x + piece[0].get_width()
             yield piece
-        
+
     def new_piece(self, offset):
         image = self.image1 if (random.random() > 0.5) else self.image2
         position = offset - image.get_width()
