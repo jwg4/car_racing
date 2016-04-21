@@ -2,14 +2,13 @@ import os, pygame, sys
 
 from opponent import *
 from scroller import *
-
-SCALE = 5
+from dimensions import SCALE, IMAGE_DIMENSIONS, WINDOW_DIMENSIONS
 
 class Window(object):
     def __init__(self):
         # Create the window/Initialise
-        self.dimensions = (180, 120)
-        self.scaled_dimensions = (180 * SCALE, 120 * SCALE)
+        self.dimensions = IMAGE_DIMENSIONS
+        self.scaled_dimensions = WINDOW_DIMENSIONS
         self.real_window = pygame.display.set_mode(self.scaled_dimensions)
         self.window = pygame.Surface(self.dimensions)
         self.clock = pygame.time.Clock()
