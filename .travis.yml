@@ -8,6 +8,7 @@ before_install:
 - sudo apt-get install -y python-pygame
 install:
 - pip install -r test_requirements.txt
+- make
 script:
   - python -m unittest discover
   - flake8 . --max-complexity 5 --max-line-length 99 --ignore E201,E202
