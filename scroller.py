@@ -88,3 +88,28 @@ class SpriteScroller(Scroller):
         image = self.image1 if (random.random() > 0.5) else self.image2
         position = offset - image.get_width()
         return (image, position)
+
+class MudScroller(BGScroller):
+    filename = "sprites/mud.png"
+
+    def _load_pieces(self, width):
+        x = 0
+        while (width - x) >= 0:
+            if random.random() < 0.05:
+                yield self.new_piece(x)
+            x = x + self.image.get_width()
+
+    def load_pieces(self, image, width):
+        image_width = image.get_width()
+        return list( self._load_pieces(width) )
+
+    def advance(self, speed):
+        l = [ (piece[0], piece[1] + speed) for piece in self.pieces ]
+        if l:
+            if l[-1][1] > self.width:
+                l = l[:-1]
+        if random.random() < 0.05:
+            l = [ self.new_piece(0) ] + l
+
+        self.pieces = l
+

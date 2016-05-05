@@ -2,7 +2,7 @@ import pygame
 import sys
 
 from opponent import Opponent
-from scroller import GrassScroller, RoadScroller, SkyScroller, SpriteScroller
+from scroller import GrassScroller, RoadScroller, SkyScroller, SpriteScroller, MudScroller
 from dimensions import IMAGE_DIMENSIONS, WINDOW_DIMENSIONS
 
 
@@ -35,7 +35,9 @@ class Window(object):
             GrassScroller(self.dimensions[0], 105),
             RoadScroller(self.dimensions[0], 75),
             SkyScroller(self.dimensions[0], 0),
-            SpriteScroller(self.dimensions[0], 30)
+            SpriteScroller(self.dimensions[0], 30),
+            MudScroller(self.dimensions[0], 75),
+            MudScroller(self.dimensions[0], 90),
         ]
 
         # Draw
