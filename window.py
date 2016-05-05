@@ -37,7 +37,6 @@ class Window(object):
             SkyScroller(self.dimensions[0], 0),
             SpriteScroller(self.dimensions[0], 30),
             MudScroller(self.dimensions[0], 75),
-            MudScroller(self.dimensions[0], 90),
         ]
 
         # Draw
