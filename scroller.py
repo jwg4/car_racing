@@ -108,7 +108,7 @@ class MudScroller(BGScroller):
         if l:
             if l[-1][1] > self.width:
                 l = l[:-1]
-        if random.random() < 0.05:
+        if random.random() * self.image.get_width() < 0.05 * speed:
             l = [ self.new_piece(0) ] + l
 
         self.pieces = l
