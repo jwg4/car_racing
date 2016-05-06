@@ -89,6 +89,7 @@ class SpriteScroller(Scroller):
         position = offset - image.get_width()
         return (image, position)
 
+
 class MudScroller(BGScroller):
     filename = "sprites/mud.png"
 
@@ -100,7 +101,6 @@ class MudScroller(BGScroller):
             x = x + self.image.get_width()
 
     def load_pieces(self, image, width):
-        image_width = image.get_width()
         return list( self._load_pieces(width) )
 
     def advance(self, speed):
@@ -112,4 +112,3 @@ class MudScroller(BGScroller):
             l = [ self.new_piece(0) ] + l
 
         self.pieces = l
-
