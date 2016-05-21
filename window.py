@@ -42,6 +42,14 @@ class Window(object):
         # Draw
         self.draw()
 
+    def splash(self):
+        self.window.blit(pygame.image.load("screens/splash.png"), (0, 0))
+        self.real_window.blit(pygame.transform.scale(self.window, self.scaled_dimensions), (0, 0))
+        
+        while True:
+            if self.wait_for_input():
+                return
+        
     # THE WHILE LOOP
     def main(self):
         self.clock.tick(40)
@@ -93,3 +101,13 @@ class Window(object):
                 self.quit()
             elif event.type == pygame.KEYUP:  # Keyboard
                 self.handle_key_up(event.key)
+
+    def wait_for_input(self):
+        for event in pygame.event.get():
+            if (event.type == pygame.KEYDOWN):
+                return True
+            elif event.type == pygame.QUIT:
+                self.quit()
+            elif event.type == pygame.KEYUP:  # Keyboard
+                return True
+            return False
